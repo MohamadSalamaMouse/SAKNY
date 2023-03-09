@@ -1,6 +1,6 @@
 # SAKNY
 ## Running on device
-1 **git clone 'url' or manually download zip project**
+- **git clone 'url' or manually download zip project**
 - **composer install**
 - **npm install**
 - **npm run dev**
