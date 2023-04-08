@@ -2,6 +2,8 @@
 
 use App\Http\Controllers\AdminAuth\AuthenticatedSessionController;
 use App\Http\Controllers\AdminAuth\RegisteredUserController;
+use App\Http\Controllers\dashboard\AdminController;
+use App\Http\Controllers\dashboard\UserController;
 use App\Http\Controllers\ProfileController;
 use Illuminate\Support\Facades\Route;
 
@@ -21,9 +23,22 @@ Route::prefix('admin')->name('admin.')->group(function (){
         Route::get('register', [RegisteredUserController::class, 'create'])->name('register');
         Route::post('register', [RegisteredUserController::class, 'store']);
         Route::post('logout', [AuthenticatedSessionController::class, 'destroy'])->name('logout');
-Route::get('index',function (){
-    return view('admin.master');
-})->name('index');
+        Route::get('/',function (){return view('admin.master');})->name('index');
+       //get all admins
+        Route::get('admins',[AdminController::class,'index'])->name('admins');
+        //delete admin
+        Route::delete('admins/{id}',[AdminController::class,'destroy'])->name('destroy');
+        // search for admin
+        Route::post('search',[AdminController::class,'search'])->name('search');
+
+        //get all users
+        Route::get('users',[UserController::class,'index'])->name('users');
+        // search for users
+        Route::post('search',[UserController::class,'search'])->name('user.search');
+        //delete user with id
+        Route::delete('user/{id}',[UserController::class,'destroy'])->name('user.destroy');
+
+
     });
     require __DIR__.'/admin_auth.php';
 });
