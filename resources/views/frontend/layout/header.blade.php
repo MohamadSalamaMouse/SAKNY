@@ -16,33 +16,25 @@
 
             <div class="menu">
                 <ul>
-                    <li><a href="#">buy<i class="fas fa-angle-down"></i></a>
+
+                    <li><a href="#">my listings<i class="fas fa-angle-down"></i></a>
                         <ul>
-                            <li><a href="#">house</a></li>
-                            <li><a href="#">flat</a></li>
-                            <li><a href="#">shop</a></li>
-                            <li><a href="#">ready to move</a></li>
-                            <li><a href="#">furnished</a></li>
+                            <li><a href="dashboard.php">dashboard</a></li>
+                            <li><a href="post_property.php">post property</a></li>
+                            <li><a href="my_listings.php">my listings</a></li>
                         </ul>
                     </li>
-                    <li><a href="#">sell<i class="fas fa-angle-down"></i></a>
+                    <li><a href="#">options<i class="fas fa-angle-down"></i></a>
                         <ul>
-                            <li><a href="#">post property</a></li>
-                            <li><a href="#">dashboard</a></li>
-                        </ul>
-                    </li>
-                    <li><a href="#">rent</a>
-                        <ul>
-                            <li><a href="#">house</a></li>
-                            <li><a href="#">flat</a></li>
-                            <li><a href="#">shop</a></li>
+                            <li><a href="{{route('search.index')}}">filter search</a></li>
+                            <li><a href="listings.php">all listings</a></li>
                         </ul>
                     </li>
                     <li><a href="#">help<i class="fas fa-angle-down"></i></a>
                         <ul>
-                            <li><a href="about.html">about us</a></i></li>
-                            <li><a href="contact.html">contact us</a></i></li>
-                            <li><a href="contact.html#faq">FAQ</a></i></li>
+                            <li><a href="{{route('contact.about')}}">about us</a></i></li>
+                            <li><a href="{{route('contact')}}">contact us</a></i></li>
+                            <li><a href="{{route('contact')}}">FAQ</a></i></li>
                         </ul>
                     </li>
                 </ul>

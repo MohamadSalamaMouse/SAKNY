@@ -3,6 +3,7 @@
 use App\Http\Controllers\AdminAuth\AuthenticatedSessionController;
 use App\Http\Controllers\AdminAuth\RegisteredUserController;
 use App\Http\Controllers\dashboard\AdminController;
+use App\Http\Controllers\dashboard\MsessageController;
 use App\Http\Controllers\dashboard\UserController;
 use App\Http\Controllers\ProfileController;
 use Illuminate\Support\Facades\Route;
@@ -34,10 +35,16 @@ Route::prefix('admin')->name('admin.')->group(function (){
         //get all users
         Route::get('users',[UserController::class,'index'])->name('users');
         // search for users
-        Route::post('search',[UserController::class,'search'])->name('user.search');
+        Route::post('user/search',[UserController::class,'search'])->name('user.search');
         //delete user with id
         Route::delete('user/{id}',[UserController::class,'destroy'])->name('user.destroy');
 
+        //get all messages
+        Route::get('messages',[MsessageController::class,'index'])->name('messages');
+        // search for messages
+        Route::post('message/search',[MsessageController::class,'search'])->name('message.search');
+        //delete message with id
+        Route::delete('message/{id}',[MsessageController::class,'destroy'])->name('message.destroy');
 
     });
     require __DIR__.'/admin_auth.php';

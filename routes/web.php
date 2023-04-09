@@ -1,6 +1,8 @@
 <?php
 
+use App\Http\Controllers\MessageController;
 use App\Http\Controllers\ProfileController;
+use App\Http\Controllers\SearchController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -27,7 +29,11 @@ Route::middleware('auth')->group(function () {
     Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
 });
-
+Route::get('contact',[MessageController::class,'index'])->name('contact');
+Route::post('contact',[MessageController::class,'store'])->name('contact.store');
+Route::get('contact/about',[MessageController::class,'about'])->name('contact.about');
+//search
+Route::get('search',[SearchController::class,'index'])->name('search.index');
 require __DIR__.'/auth.php';
 
 require __DIR__.'/admin.php';

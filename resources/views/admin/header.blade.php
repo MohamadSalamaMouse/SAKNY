@@ -9,7 +9,7 @@
         <a href="listings.php"><i class="fas fa-building"></i><span>listings</span></a>
         <a href="{{route('admin.users')}}"><i class="fas fa-user"></i><span>users</span></a>
         <a href="{{route('admin.admins')}}"><i class="fas fa-user-gear"></i><span>admins</span></a>
-        <a href="messages.php"><i class="fas fa-message"></i><span>messages</span></a>
+        <a href="{{route('admin.messages')}}"><i class="fas fa-message"></i><span>messages</span></a>
     </nav>
 
     <a href="update.php" class="btn">update account</a>
