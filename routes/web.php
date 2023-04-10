@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\MessageController;
 use App\Http\Controllers\ProfileController;
+use App\Http\Controllers\PropertyController;
 use App\Http\Controllers\SearchController;
 use Illuminate\Support\Facades\Route;
 
@@ -34,6 +35,9 @@ Route::post('contact',[MessageController::class,'store'])->name('contact.store')
 Route::get('contact/about',[MessageController::class,'about'])->name('contact.about');
 //search
 Route::get('search',[SearchController::class,'index'])->name('search.index');
+Route::get('/property', [PropertyController::class,'index'])->middleware(['auth', 'verified'])->name('property');
+Route::post('/property/store', [PropertyController::class,'store'])->middleware(['auth', 'verified'])->name('property.store');
+Route::get('listings',[PropertyController::class,'all_listings'])->name('all listings');
 require __DIR__.'/auth.php';
 
 require __DIR__.'/admin.php';

@@ -43,11 +43,11 @@ return new class extends Migration
             $table->string('hospital',3);
             $table->string('school',3);
             $table->string('market_area',3);
-            $table->string('image_01',50);
-            $table->string('image_02',50);
-            $table->string('image_03',50);
-            $table->string('image_04',50);
-            $table->string('image_05',50);
+            $table->string('image_01',255);
+            $table->string('image_02',255);
+            $table->string('image_03',255);
+            $table->string('image_04',255);
+            $table->string('image_05',255);
             $table->text('description');
             $table->timestamps();
         });

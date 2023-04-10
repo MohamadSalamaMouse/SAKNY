@@ -5,7 +5,7 @@
             <a href="home.html" class="logo"><i class="fas fa-house"></i>MyHome</a>
 
             <ul>
-                <li><a href="#">post property<i class="fas fa-paper-plane"></i></a></li>
+                <li><a href="{{route('property')}}">post property<i class="fas fa-paper-plane"></i></a></li>
             </ul>
         </section>
     </nav>
@@ -27,7 +27,7 @@
                     <li><a href="#">options<i class="fas fa-angle-down"></i></a>
                         <ul>
                             <li><a href="{{route('search.index')}}">filter search</a></li>
-                            <li><a href="listings.php">all listings</a></li>
+                            <li><a href="{{route('all listings')}}">all listings</a></li>
                         </ul>
                     </li>
                     <li><a href="#">help<i class="fas fa-angle-down"></i></a>
