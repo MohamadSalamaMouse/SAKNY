@@ -2,9 +2,11 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Message;
 use App\Models\Property;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\DB;
 
 class PropertyController extends Controller
 {
@@ -24,36 +26,46 @@ class PropertyController extends Controller
         $image_05=$request->file('image_05');
 //extension
         $image_01_ext=$image_01->getClientOriginalExtension();
-        $image_02_ext=$image_02->getClientOriginalExtension();
-        $image_03_ext=$image_03->getClientOriginalExtension();
-        $image_04_ext=$image_04->getClientOriginalExtension();
-        $image_05_ext=$image_05->getClientOriginalExtension();
-        //name
         $name_01=$image_01->getClientOriginalName();
-        $name_02=$image_02->getClientOriginalName();
-        $name_03=$image_03->getClientOriginalName();
-        $name_04=$image_04->getClientOriginalName();
-        $name_05=$image_05->getClientOriginalName();
         $name_01=explode('.',$name_01);
-        $name_02=explode('.',$name_02);
-        $name_03=explode('.',$name_03);
-        $name_04=explode('.',$name_04);
-        $name_05=explode('.',$name_05);
         array_pop($name_01);
-        array_pop($name_02);
-        array_pop($name_03);
-        array_pop($name_04);
-        array_pop($name_05);
         $name_01=join($name_01);
-        $name_02=join($name_02);
-        $name_03=join($name_03);
-        $name_04=join($name_04);
-        $name_05=join($name_05);
         $name_01="$name_01".$user_id.".$image_01_ext";
-        $name_02="$name_02".$user_id.".$image_02_ext";
-        $name_03="$name_03".$user_id.".$image_03_ext";
-        $name_04="$name_04".$user_id.".$image_04_ext";
-        $name_03="$name_05".$user_id.".$image_05_ext";
+
+        if($image_02 !=null){
+            $image_02_ext=$image_02->getClientOriginalExtension();
+            $name_02=$image_02->getClientOriginalName();
+            $name_02=explode('.',$name_02);
+            array_pop($name_02);
+            $name_02=join($name_02);
+            $name_02="$name_02".$user_id.".$image_02_ext";
+        }else $name_02=null;
+        if ($image_03 !=null){
+            $image_03_ext=$image_03->getClientOriginalExtension();
+            $name_03=$image_03->getClientOriginalName();
+            $name_03=explode('.',$name_03);
+            array_pop($name_03);
+            $name_03=join($name_03);
+            $name_03="$name_03".$user_id.".$image_03_ext";
+
+
+        }else $name_03=null;
+        if($image_04 !=null){
+            $image_04_ext=$image_04->getClientOriginalExtension();
+            $name_04=$image_04->getClientOriginalName();
+            $name_04=explode('.',$name_04);
+            array_pop($name_04);
+            $name_04=join($name_04);
+            $name_04="$name_04".$user_id.".$image_04_ext";
+        }else $name_04=null;
+        if ($image_05 !=null){
+            $image_05_ext=$image_05->getClientOriginalExtension();
+            $name_05=$image_05->getClientOriginalName();
+            $name_05=explode('.',$name_05);
+            array_pop($name_05);
+            $name_05=join($name_05);
+            $name_05="$name_05".$user_id.".$image_05_ext";
+        } else $name_05=null;
 
         //isset
         if(isset($request->lift)){
@@ -143,7 +155,7 @@ class PropertyController extends Controller
             'total_floors'=>$request->total_floors,
             'room_floor'=>$request->room_floor,
             'loan'=>$request->loan,
-            'lift'=>$request->lift,
+            'lift'=>$lift,
             'security_guard'=>$security_guard,
             'play_guard'=>$play_ground,
             'garden'=>$garden,
@@ -165,9 +177,13 @@ class PropertyController extends Controller
         $property=Property::latest()->first();
         $property_id=$property->id;
         $image_01->move(public_path('attachments/'.$user_id.'/'.$property_id),$name_01);
+        if($image_02 !=null)
         $image_02->move(public_path('attachments/'.$user_id.'/'.$property_id),$name_02);
+        if($image_03 !=null)
         $image_03->move(public_path('attachments/'.$user_id.'/'.$property_id),$name_03);
+        if($image_04 !=null)
         $image_04->move(public_path('attachments/'.$user_id.'/'.$property_id),$name_04);
+        if($image_05 !=null)
         $image_05->move(public_path('attachments/'.$user_id.'/'.$property_id),$name_05);
         return redirect()->back();
 
@@ -178,4 +194,28 @@ class PropertyController extends Controller
         $properties=Property::all();
         return view('frontend.listings',compact('properties'));
     }
+    function all_listings_property_admin(){
+
+        $properties=Property::all();
+        return view('admin.listings',compact('properties'));
+    }
+
+
+
+    public  function search(Request $request){
+        $search_box=$request->search_box;
+        $properties = DB::table('property')
+            ->where('property_name', 'like', '%'.$search_box.'%')
+            ->orWhere('address', 'like', '%'.$search_box.'%')
+
+            ->get();
+        return view('admin.listings',compact('properties'));
+    }
+
+    public  function destroy($id){
+        $property=Property::findorfail($id);
+        $property->delete();
+        return redirect()->back();
+    }
+
 }

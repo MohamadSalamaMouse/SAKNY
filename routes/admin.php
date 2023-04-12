@@ -3,9 +3,12 @@
 use App\Http\Controllers\AdminAuth\AuthenticatedSessionController;
 use App\Http\Controllers\AdminAuth\RegisteredUserController;
 use App\Http\Controllers\dashboard\AdminController;
+use App\Http\Controllers\dashboard\HomeController;
 use App\Http\Controllers\dashboard\MsessageController;
+use App\Http\Controllers\dashboard\updateController;
 use App\Http\Controllers\dashboard\UserController;
 use App\Http\Controllers\ProfileController;
+use App\Http\Controllers\PropertyController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -24,7 +27,12 @@ Route::prefix('admin')->name('admin.')->group(function (){
         Route::get('register', [RegisteredUserController::class, 'create'])->name('register');
         Route::post('register', [RegisteredUserController::class, 'store']);
         Route::post('logout', [AuthenticatedSessionController::class, 'destroy'])->name('logout');
+        //profiles admin
+        Route::get('update/create',[updateController::class,'create'])->name('update.create');
+
         Route::get('/',function (){return view('admin.master');})->name('index');
+        //home of dashboard
+        Route::get('dashboard/home',[HomeController::class,'index'])->name('dashboard.home');
        //get all admins
         Route::get('admins',[AdminController::class,'index'])->name('admins');
         //delete admin
@@ -45,6 +53,12 @@ Route::prefix('admin')->name('admin.')->group(function (){
         Route::post('message/search',[MsessageController::class,'search'])->name('message.search');
         //delete message with id
         Route::delete('message/{id}',[MsessageController::class,'destroy'])->name('message.destroy');
+        //get all properties
+        Route::get('properties',[PropertyController::class,'all_listings_property_admin'])->name('properties');
+        // search for properties
+        Route::post('property/search',[PropertyController::class,'search'])->name('property.search');
+        //delete property with id
+        Route::delete('property/{id}',[PropertyController::class,'destroy'])->name('property.destroy');
 
     });
     require __DIR__.'/admin_auth.php';

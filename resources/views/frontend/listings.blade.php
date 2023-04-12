@@ -36,7 +36,7 @@
 
                <?php $total_images = (1 + $image_coutn_02 + $image_coutn_03 + $image_coutn_04 + $image_coutn_05);?>
 
-                ?>
+
             <form action="" method="POST">
                 <div class="box">
                     <input type="hidden" name="property_id" value="{{$property->id}}">
