@@ -16,22 +16,22 @@
                 @if(!empty($property->image_02))
                         <?php $image_coutn_02 = 1?>
                     @else
-                   <?=$image_coutn_02 = 0?>
+                   <?php $image_coutn_02 = 0?>
                     @endif
                     @if(!empty($property->image_03))
                             <?php $image_coutn_03 = 1?>
                     @else
-                            <?=$image_coutn_03 = 0?>
+                            <?php $image_coutn_03 = 0?>
                     @endif
                     @if(!empty($property->image_04))
                             <?php $image_coutn_04 = 1?>
                     @else
-                            <?=$image_coutn_04 = 0?>
+                            <?php $image_coutn_04 = 0?>
                     @endif
                     @if(!empty($property->image_05))
                             <?php $image_coutn_05 = 1?>
                     @else
-                            <?=$image_coutn_05 = 0?>
+                            <?php $image_coutn_05 = 0?>
                     @endif
 
                <?php $total_images = (1 + $image_coutn_02 + $image_coutn_03 + $image_coutn_04 + $image_coutn_05);?>
@@ -47,8 +47,8 @@
 
                     <div class="thumb">
                         <p class="total-images"><i class="far fa-image"></i><span><?= $total_images; ?></span></p>
-
-                        <img src="attachments/{{$property->user_id}}/{{$property->id}}/{{$property->image_01}}" alt="">
+                            <?php $path="attachments/$property->user_id/$property->id/$property->image_01"?>
+                        <img src="{{\Illuminate\Support\Facades\URL::asset($path) }}" alt="">
                     </div>
                     <div class="admin">
                         <h3><?= substr($property->user_name, 0, 1); ?></h3>
@@ -72,14 +72,14 @@
                     </div>
                     <div class="flex-btn">
                         <a href="{{route('view_property',$property->id)}}" class="btn">view property</a>
-                        <input type="submit" value="send enquiry" name="send" class="btn">
+
                     </div>
                 </div>
             </form>
 
 @endforeach
 @else
-<p class="empty">no properties added yet! <a href="post_property.php" style="margin-top:1.5rem;" class="btn">add new</a></p>
+<p class="empty">no properties added yet! <a href="{{route('property')}}" style="margin-top:1.5rem;" class="btn">add new</a></p>
  @endif
 
         </div>

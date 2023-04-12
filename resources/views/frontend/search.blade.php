@@ -4,7 +4,8 @@
     <!-- search filter section starts  -->
     <section class="filters" style="padding-bottom: 0;">
 
-        <form action="" method="post">
+        <form action="{{route('search.filter')}}" method="post">
+            @csrf
             <div id="close-filter"><i class="fas fa-times"></i></div>
             <h3>filter your search</h3>
 
@@ -44,60 +45,13 @@
                     </select>
                 </div>
                 <div class="box">
-                    <p>maximum budget</p>
-                    <select name="minimum" class="input" required>
-                        <option value="5000000">5 lac</option>
-                        <option value="1000000">10 lac</option>
-                        <option value="2000000">20 lac</option>
-                        <option value="3000000">30 lac</option>
-                        <option value="4000000">40 lac</option>
-                        <option value="4000000">40 lac</option>
-                        <option value="5000000">50 lac</option>
-                        <option value="6000000">60 lac</option>
-                        <option value="7000000">70 lac</option>
-                        <option value="8000000">80 lac</option>
-                        <option value="9000000">90 lac</option>
-                        <option value="10000000">1 Cr</option>
-                        <option value="20000000">2 Cr</option>
-                        <option value="30000000">3 Cr</option>
-                        <option value="40000000">4 Cr</option>
-                        <option value="50000000">5 Cr</option>
-                        <option value="60000000">6 Cr</option>
-                        <option value="70000000">7 Cr</option>
-                        <option value="80000000">8 Cr</option>
-                        <option value="90000000">9 Cr</option>
-                        <option value="100000000">10 Cr</option>
-                        <option value="150000000">15 Cr</option>
-                        <option value="200000000">20 Cr</option>
-                    </select>
+                    <p>minimum budget</p>
+                    <input type="number" name="minimum" required min="0" max="9999999999" maxlength="10" placeholder="enter minimum budget" class="input">
                 </div>
                 <div class="box">
-                    <p>maximum budget</p>
-                    <select name="maximum" class="input" required>
-                        <option value="5000000">5 lac</option>
-                        <option value="1000000">10 lac</option>
-                        <option value="2000000">20 lac</option>
-                        <option value="3000000">30 lac</option>
-                        <option value="4000000">40 lac</option>
-                        <option value="4000000">40 lac</option>
-                        <option value="5000000">50 lac</option>
-                        <option value="6000000">60 lac</option>
-                        <option value="7000000">70 lac</option>
-                        <option value="8000000">80 lac</option>
-                        <option value="9000000">90 lac</option>
-                        <option value="10000000">1 Cr</option>
-                        <option value="20000000">2 Cr</option>
-                        <option value="30000000">3 Cr</option>
-                        <option value="40000000">4 Cr</option>
-                        <option value="50000000">5 Cr</option>
-                        <option value="60000000">6 Cr</option>
-                        <option value="70000000">7 Cr</option>
-                        <option value="80000000">8 Cr</option>
-                        <option value="90000000">9 Cr</option>
-                        <option value="100000000">10 Cr</option>
-                        <option value="150000000">15 Cr</option>
-                        <option value="200000000">20 Cr</option>
-                    </select>
+                    <p>maximum budget <span>*</span></p>
+                    <input type="number" name="maximum" required min="0" max="9999999999" maxlength="10" placeholder="enter maximum budget" class="input">
+
                 </div>
                 <div class="box">
                     <p>status</p>
@@ -128,7 +82,7 @@
 <section class="listings">
 
 
-    <h1 class="heading">latest listings</h1>
+
    <div class="box-container">
 
        @if ($properties != [])
@@ -138,22 +92,22 @@
                @if(!empty($property->image_02))
                        <?php $image_coutn_02 = 1?>
                @else
-                       <?=$image_coutn_02 = 0?>
+                       <?php $image_coutn_02 = 0?>
                @endif
                @if(!empty($property->image_03))
                        <?php $image_coutn_03 = 1?>
                @else
-                       <?=$image_coutn_03 = 0?>
+                       <?php $image_coutn_03 = 0?>
                @endif
                @if(!empty($property->image_04))
                        <?php $image_coutn_04 = 1?>
                @else
-                       <?=$image_coutn_04 = 0?>
+                       <?php $image_coutn_04 = 0?>
                @endif
                @if(!empty($property->image_05))
                        <?php $image_coutn_05 = 1?>
                @else
-                       <?=$image_coutn_05 = 0?>
+                       <?php $image_coutn_05 = 0?>
                @endif
 
                    <?php $total_images = (1 + $image_coutn_02 + $image_coutn_03 + $image_coutn_04 + $image_coutn_05);?>
@@ -169,8 +123,8 @@
 
                        <div class="thumb">
                            <p class="total-images"><i class="far fa-image"></i><span><?= $total_images; ?></span></p>
-
-                           <img src="attachments/{{$property->user_id}}/{{$property->id}}/{{$property->image_01}}" alt="">
+                               <?php $path="attachments/$property->user_id/$property->id/$property->image_01"?>
+                           <img src="{{\Illuminate\Support\Facades\URL::asset($path) }}" alt="">
                        </div>
                        <div class="admin">
                            <h3><?= substr($property->user_name, 0, 1); ?></h3>
@@ -194,14 +148,14 @@
                        </div>
                        <div class="flex-btn">
                            <a href="{{route('view_property',$property->id)}}" class="btn">view property</a>
-                           <input type="submit" value="send enquiry" name="send" class="btn">
+
                        </div>
                    </div>
                </form>
 
            @endforeach
        @else
-           <p class="empty">no properties added yet! <a href="post_property.php" style="margin-top:1.5rem;" class="btn">add new</a></p>
+           <p class="empty">no properties added yet! <a href="{{route('property')}}" style="margin-top:1.5rem;" class="btn">add new</a></p>
        @endif
 
    </div>

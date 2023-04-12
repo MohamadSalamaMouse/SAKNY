@@ -13,7 +13,7 @@
             <input type="text" name="phone" required maxlength="11" placeholder="enter your phone" class="box">
             <input type="password" name="password" required maxlength="20" placeholder="enter your password" class="box">
             <input type="password" name="c_pass" required maxlength="20" placeholder="confirm your password" class="box">
-            <p>already have an account? <a href="{{route('login')}}">register now</a></p>
+            <p>already have an account? <a href="{{route('login')}}">login now</a></p>
             <input type="submit" value="register now" name="submit" class="btn">
         </form>
 

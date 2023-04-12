@@ -6,7 +6,7 @@
 
         <section class="center">
 
-            <form action="" method="post">
+            <form action="{{route('home.search')}}" method="post">
                 @csrf
                 <h3>find your perfect home</h3>
                 <div class="box">
@@ -37,60 +37,12 @@
                         </select>
                     </div>
                     <div class="box">
-                        <p>maximum budget <span>*</span></p>
-                        <select name="minimum" class="input" required>
-                            <option value="5000000">5 lac</option>
-                            <option value="1000000">10 lac</option>
-                            <option value="2000000">20 lac</option>
-                            <option value="3000000">30 lac</option>
-                            <option value="4000000">40 lac</option>
-                            <option value="4000000">40 lac</option>
-                            <option value="5000000">50 lac</option>
-                            <option value="6000000">60 lac</option>
-                            <option value="7000000">70 lac</option>
-                            <option value="8000000">80 lac</option>
-                            <option value="9000000">90 lac</option>
-                            <option value="10000000">1 Cr</option>
-                            <option value="20000000">2 Cr</option>
-                            <option value="30000000">3 Cr</option>
-                            <option value="40000000">4 Cr</option>
-                            <option value="50000000">5 Cr</option>
-                            <option value="60000000">6 Cr</option>
-                            <option value="70000000">7 Cr</option>
-                            <option value="80000000">8 Cr</option>
-                            <option value="90000000">9 Cr</option>
-                            <option value="100000000">10 Cr</option>
-                            <option value="150000000">15 Cr</option>
-                            <option value="200000000">20 Cr</option>
-                        </select>
+                        <p >minimum budget <span>*</span></p>
+                        <input type="number" name="minimum" required min="0" max="9999999999" maxlength="10" placeholder="enter minimum budget" class="input">
                     </div>
                     <div class="box">
                         <p>maximum budget <span>*</span></p>
-                        <select name="maximum" class="input" required>
-                            <option value="5000000">5 lac</option>
-                            <option value="1000000">10 lac</option>
-                            <option value="2000000">20 lac</option>
-                            <option value="3000000">30 lac</option>
-                            <option value="4000000">40 lac</option>
-                            <option value="4000000">40 lac</option>
-                            <option value="5000000">50 lac</option>
-                            <option value="6000000">60 lac</option>
-                            <option value="7000000">70 lac</option>
-                            <option value="8000000">80 lac</option>
-                            <option value="9000000">90 lac</option>
-                            <option value="10000000">1 Cr</option>
-                            <option value="20000000">2 Cr</option>
-                            <option value="30000000">3 Cr</option>
-                            <option value="40000000">4 Cr</option>
-                            <option value="50000000">5 Cr</option>
-                            <option value="60000000">6 Cr</option>
-                            <option value="70000000">7 Cr</option>
-                            <option value="80000000">8 Cr</option>
-                            <option value="90000000">9 Cr</option>
-                            <option value="100000000">10 Cr</option>
-                            <option value="150000000">15 Cr</option>
-                            <option value="200000000">20 Cr</option>
-                        </select>
+                        <input type="number" name="maximum" required min="0" max="9999999999" maxlength="10" placeholder="enter maximum budget" class="input">
                     </div>
                 </div>
                 <input type="submit" value="search property" name="search" class="btn">
@@ -202,7 +154,8 @@
                             <div class="thumb">
                                 <p class="total-images"><i class="far fa-image"></i><span><?= $total_images; ?></span></p>
 
-                                <img src="attachments/{{$property->user_id}}/{{$property->id}}/{{$property->image_01}}" alt="">
+                                    <?php $path="attachments/$property->user_id/$property->id/$property->image_01"?>
+                                <img src="{{\Illuminate\Support\Facades\URL::asset($path) }}" alt="">
                             </div>
                             <div class="admin">
                                 <h3><?= substr($property->user_name, 0, 1); ?></h3>
@@ -226,7 +179,7 @@
                             </div>
                             <div class="flex-btn">
                                 <a href="{{route('view_property',$property->id)}}" class="btn">view property</a>
-                                <input type="submit" value="send enquiry" name="send" class="btn">
+
                             </div>
                         </div>
                     </form>

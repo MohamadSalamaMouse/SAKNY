@@ -46,6 +46,16 @@
                     <ul>
                         <li><a href="{{route('login')}}">login</a></li>
                         <li><a href="{{route('register')}}">register</a></li>
+                        <li><a href="{{route('profile.edit')}}">profile</a></li>
+                        <form method="POST" action="{{ route('logout') }}">
+                            @csrf
+
+                            <x-dropdown-link :href="route('logout')"
+                                             onclick="event.preventDefault();
+                                                this.closest('form').submit();">
+                                {{ __('Log Out') }}
+                            </x-dropdown-link>
+                        </form>
                     </ul>
                 </li>
             </ul>

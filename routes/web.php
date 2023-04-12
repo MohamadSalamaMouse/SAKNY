@@ -21,6 +21,7 @@ use Illuminate\Support\Facades\Route;
 
 //home page
 Route::get('/',[HomeController::class,'index'])->name('home_page');
+Route::post('Home/search',[HomeController::class,'search'])->name('home.search');
 
 Route::get('/dashboard', function () {
     return view('dashboard');
@@ -36,6 +37,7 @@ Route::post('contact',[MessageController::class,'store'])->name('contact.store')
 Route::get('contact/about',[MessageController::class,'about'])->name('contact.about');
 //search
 Route::get('search',[SearchController::class,'index'])->name('search.index');
+Route::post('filter',[SearchController::class,'filter'])->name('search.filter');
 Route::get('/property', [PropertyController::class,'index'])->middleware(['auth', 'verified'])->name('property');
 Route::post('/property/store', [PropertyController::class,'store'])->middleware(['auth', 'verified'])->name('property.store');
 Route::get('listings',[PropertyController::class,'all_listings'])->name('all listings');
