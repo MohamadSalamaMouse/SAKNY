@@ -38,6 +38,7 @@ Route::get('search',[SearchController::class,'index'])->name('search.index');
 Route::get('/property', [PropertyController::class,'index'])->middleware(['auth', 'verified'])->name('property');
 Route::post('/property/store', [PropertyController::class,'store'])->middleware(['auth', 'verified'])->name('property.store');
 Route::get('listings',[PropertyController::class,'all_listings'])->name('all listings');
+Route::get('view_property/{id}',[PropertyController::class,'view_property'])->name('view_property');
 require __DIR__.'/auth.php';
 
 require __DIR__.'/admin.php';

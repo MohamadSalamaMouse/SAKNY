@@ -11,112 +11,96 @@
 
         <h1 class="heading">property details</h1>
 
-        <?php
-        $select_properties = $conn->prepare("SELECT * FROM `property` WHERE id = ? ORDER BY date DESC LIMIT 1");
-        $select_properties->execute([$get_id]);
-        if($select_properties->rowCount() > 0){
-        while($fetch_property = $select_properties->fetch(PDO::FETCH_ASSOC)){
 
-            $property_id = $fetch_property['id'];
 
-            $select_user = $conn->prepare("SELECT * FROM `users` WHERE id = ?");
-            $select_user->execute([$fetch_property['user_id']]);
-            $fetch_user = $select_user->fetch(PDO::FETCH_ASSOC);
+        @if($property->count() > 0){
 
-            $select_saved = $conn->prepare("SELECT * FROM `saved` WHERE property_id = ? and user_id = ?");
-            $select_saved->execute([$fetch_property['id'], $user_id]);
-            ?>
         <div class="details">
             <div class="swiper images-container">
                 <div class="swiper-wrapper">
-                    <img src="uploaded_files/<?= $fetch_property['image_01']; ?>" alt="" class="swiper-slide">
-                        <?php if(!empty($fetch_property['image_02'])){ ?>
-                    <img src="uploaded_files/<?= $fetch_property['image_02']; ?>" alt="" class="swiper-slide">
-                    <?php } ?>
-                        <?php if(!empty($fetch_property['image_03'])){ ?>
-                    <img src="uploaded_files/<?= $fetch_property['image_03']; ?>" alt="" class="swiper-slide">
-                    <?php } ?>
-                        <?php if(!empty($fetch_property['image_04'])){ ?>
-                    <img src="uploaded_files/<?= $fetch_property['image_04']; ?>" alt="" class="swiper-slide">
-                    <?php } ?>
-                        <?php if(!empty($fetch_property['image_05'])){ ?>
-                    <img src="uploaded_files/<?= $fetch_property['image_05']; ?>" alt="" class="swiper-slide">
-                    <?php } ?>
+                        <?php $path="attachments/$property->user_id/$property->id/$property->image_01"?>
+                    <img src="{{\Illuminate\Support\Facades\URL::asset($path) }} " alt="" class="swiper-slide">
+
+                @if(!empty($property->image_02))
+                            <?php $path="attachments/$property->user_id/$property->id/$property->image_02"?>
+                        <img src="{{\Illuminate\Support\Facades\URL::asset($path) }} " alt="" class="swiper-slide">
+
+                    @endif
+                    @if(!empty($property->image_03))
+
+                            <?php $path="attachments/$property->user_id/$property->id/$property->image_03"?>
+                        <img src="{{\Illuminate\Support\Facades\URL::asset($path) }} " alt="" class="swiper-slide">
+
+                    @endif
+                    @if(!empty($property->image_04))
+
+                            <?php $path="attachments/$property->user_id/$property->id/$property->image_04"?>
+                            <img src="{{\Illuminate\Support\Facades\URL::asset($path) }} " alt="" class="swiper-slide">
+
+                    @endif
+                    @if(!empty($property->image_05))
+                            <?php $path="attachments/$property->user_id/$property->id/$property->image_05"?>
+                        <img src="{{\Illuminate\Support\Facades\URL::asset($path) }} " alt="" class="swiper-slide">
+                    @endif
                 </div>
                 <div class="swiper-pagination"></div>
             </div>
-            <h3 class="name"><?= $fetch_property['property_name']; ?></h3>
-            <p class="location"><i class="fas fa-map-marker-alt"></i><span><?= $fetch_property['address']; ?></span></p>
+            <h3 class="name">{{$property->property_name}}</h3>
+            <p class="location"><i class="fas fa-map-marker-alt"></i><span>{{$property->address}}</span></p>
             <div class="info">
-                <p><i class="fas fa-indian-rupee-sign"></i><span><?= $fetch_property['price']; ?></span></p>
-                <p><i class="fas fa-user"></i><span><?= $fetch_user['name']; ?></span></p>
-                <p><i class="fas fa-phone"></i><a href="tel:1234567890"><?= $fetch_user['number']; ?></a></p>
-                <p><i class="fas fa-building"></i><span><?= $fetch_property['type']; ?></span></p>
-                <p><i class="fas fa-house"></i><span><?= $fetch_property['offer']; ?></span></p>
-                <p><i class="fas fa-calendar"></i><span><?= $fetch_property['date']; ?></span></p>
+                <p><i class="fas fa-indian-rupee-sign"></i><span>{{$property->price}}</span></p>
+                <p><i class="fas fa-user"></i><span>{{$property->user_name}}</span></p>
+                <p><i class="fas fa-phone"></i><a href="tel:{{$user->phone}}">{{$user->phone}}</a></p>
+                <p><i class="fas fa-building"></i><span>{{$property->type}}</span></p>
+                <p><i class="fas fa-house"></i><span>{{$property->offer}}</span></p>
+                <p><i class="fas fa-calendar"></i><span>{{$property->date}}</span></p>
             </div>
             <h3 class="title">details</h3>
             <div class="flex">
                 <div class="box">
-                    <p><i>rooms :</i><span><?= $fetch_property['bhk']; ?> BHK</span></p>
-                    <p><i>deposit amount : </i><span><span class="fas fa-indian-rupee-sign" style="margin-right: .5rem;"></span><?= $fetch_property['deposite']; ?></span></p>
-                    <p><i>status :</i><span><?= $fetch_property['status']; ?></span></p>
-                    <p><i>bedroom :</i><span><?= $fetch_property['bedroom']; ?></span></p>
-                    <p><i>bathroom :</i><span><?= $fetch_property['bathroom']; ?></span></p>
-                    <p><i>balcony :</i><span><?= $fetch_property['balcony']; ?></span></p>
+                    <p><i>rooms :</i><span>{{$property->bnk}} BHK</span></p>
+                    <p><i>deposit amount : </i><span><span class="fas fa-indian-rupee-sign" style="margin-right: .5rem;"></span>{{$property->desopite}} </span></p>
+                    <p><i>status :</i><span>{{$property->status}}</span></p>
+                    <p><i>bedroom :</i><span>{{$property->bedroom}}</span></p>
+                    <p><i>bathroom :</i><span>{{$property->bathroom}}</span></p>
+                    <p><i>balcony :</i><span>{{$property->balcony}}</span></p>
                 </div>
                 <div class="box">
-                    <p><i>carpet area :</i><span><?= $fetch_property['carpet']; ?>sqft</span></p>
-                    <p><i>age :</i><span><?= $fetch_property['age']; ?> years</span></p>
-                    <p><i>total floors :</i><span><?= $fetch_property['total_floors']; ?></span></p>
-                    <p><i>room floor :</i><span><?= $fetch_property['room_floor']; ?></span></p>
-                    <p><i>furnished :</i><span><?= $fetch_property['furnished']; ?></span></p>
-                    <p><i>loan :</i><span><?= $fetch_property['loan']; ?></span></p>
+                    <p><i>carpet area :</i><span>{{$property->carpet}}sqft</span></p>
+                    <p><i>age :</i><span>{{$property->age}} years</span></p>
+                    <p><i>total floors :</i><span>{{$property->total_floors}}</span></p>
+                    <p><i>room floor :</i><span>{{$property->room_floor}}</span></p>
+                    <p><i>furnished :</i><span>{{$property->furnished}}</span></p>
+                    <p><i>loan :</i><span>{{$property->loan}}</span></p>
                 </div>
             </div>
             <h3 class="title">amenities</h3>
             <div class="flex">
                 <div class="box">
-                    <p><i class="fas fa-<?php if($fetch_property['lift'] == 'yes'){echo 'check';}else{echo 'times';} ?>"></i><span>lifts</span></p>
-                    <p><i class="fas fa-<?php if($fetch_property['security_guard'] == 'yes'){echo 'check';}else{echo 'times';} ?>"></i><span>security guards</span></p>
-                    <p><i class="fas fa-<?php if($fetch_property['play_ground'] == 'yes'){echo 'check';}else{echo 'times';} ?>"></i><span>play ground</span></p>
-                    <p><i class="fas fa-<?php if($fetch_property['garden'] == 'yes'){echo 'check';}else{echo 'times';} ?>"></i><span>gardens</span></p>
-                    <p><i class="fas fa-<?php if($fetch_property['water_supply'] == 'yes'){echo 'check';}else{echo 'times';} ?>"></i><span>water supply</span></p>
-                    <p><i class="fas fa-<?php if($fetch_property['power_backup'] == 'yes'){echo 'check';}else{echo 'times';} ?>"></i><span>power backup</span></p>
+                    <p><i class="fas fa-<?php if($property->lift == 'yes'){echo 'check';}else{echo 'times';} ?>"></i><span>lifts</span></p>
+                    <p><i class="fas fa-<?php if($property['security_guard'] == 'yes'){echo 'check';}else{echo 'times';} ?>"></i><span>security guards</span></p>
+                    <p><i class="fas fa-<?php if($property['play_ground'] == 'yes'){echo 'check';}else{echo 'times';} ?>"></i><span>play ground</span></p>
+                    <p><i class="fas fa-<?php if($property['garden'] == 'yes'){echo 'check';}else{echo 'times';} ?>"></i><span>gardens</span></p>
+                    <p><i class="fas fa-<?php if($property['water_supply'] == 'yes'){echo 'check';}else{echo 'times';} ?>"></i><span>water supply</span></p>
+                    <p><i class="fas fa-<?php if($property['power_backup'] == 'yes'){echo 'check';}else{echo 'times';} ?>"></i><span>power backup</span></p>
                 </div>
                 <div class="box">
-                    <p><i class="fas fa-<?php if($fetch_property['parking_area'] == 'yes'){echo 'check';}else{echo 'times';} ?>"></i><span>parking area</span></p>
-                    <p><i class="fas fa-<?php if($fetch_property['gym'] == 'yes'){echo 'check';}else{echo 'times';} ?>"></i><span>gym</span></p>
-                    <p><i class="fas fa-<?php if($fetch_property['shopping_mall'] == 'yes'){echo 'check';}else{echo 'times';} ?>"></i><span>shopping mall</span></p>
-                    <p><i class="fas fa-<?php if($fetch_property['hospital'] == 'yes'){echo 'check';}else{echo 'times';} ?>"></i><span>hospital</span></p>
-                    <p><i class="fas fa-<?php if($fetch_property['school'] == 'yes'){echo 'check';}else{echo 'times';} ?>"></i><span>schools</span></p>
-                    <p><i class="fas fa-<?php if($fetch_property['market_area'] == 'yes'){echo 'check';}else{echo 'times';} ?>"></i><span>market area</span></p>
+                    <p><i class="fas fa-<?php if($property['parking_area'] == 'yes'){echo 'check';}else{echo 'times';} ?>"></i><span>parking area</span></p>
+                    <p><i class="fas fa-<?php if($property['gym'] == 'yes'){echo 'check';}else{echo 'times';} ?>"></i><span>gym</span></p>
+                    <p><i class="fas fa-<?php if($property['shopping_mall'] == 'yes'){echo 'check';}else{echo 'times';} ?>"></i><span>shopping mall</span></p>
+                    <p><i class="fas fa-<?php if($property['hospital'] == 'yes'){echo 'check';}else{echo 'times';} ?>"></i><span>hospital</span></p>
+                    <p><i class="fas fa-<?php if($property['school'] == 'yes'){echo 'check';}else{echo 'times';} ?>"></i><span>schools</span></p>
+                    <p><i class="fas fa-<?php if($property['market_area'] == 'yes'){echo 'check';}else{echo 'times';} ?>"></i><span>market area</span></p>
                 </div>
             </div>
             <h3 class="title">description</h3>
-            <p class="description"><?= $fetch_property['description']; ?></p>
-            <form action="" method="post" class="flex-btn">
-                <input type="hidden" name="property_id" value="<?= $property_id; ?>">
-                    <?php
-                if($select_saved->rowCount() > 0){
-                    ?>
-                <button type="submit" name="save" class="save"><i class="fas fa-heart"></i><span>saved</span></button>
-                    <?php
-                }else{
-                    ?>
-                <button type="submit" name="save" class="save"><i class="far fa-heart"></i><span>save</span></button>
-                    <?php
-                }
-                    ?>
-                <input type="submit" value="send enquiry" name="send" class="btn">
-            </form>
+            <p class="description"><?= $property['description']; ?></p>
+
         </div>
-            <?php
-        }
-        }else{
-            echo '<p class="empty">property not found! <a href="post_property.php" style="margin-top:1.5rem;" class="btn">add new</a></p>';
-        }
-        ?>
+        @else
+            echo '<p class="empty">property not found! <a href="{{route('property')}}" style="margin-top:1.5rem;" class="btn">add new</a></p>';
+
+        @endif
 
     </section>
 

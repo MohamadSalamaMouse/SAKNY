@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Message;
 use App\Models\Property;
+use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
@@ -200,7 +201,12 @@ class PropertyController extends Controller
         return view('admin.listings',compact('properties'));
     }
 
-
+     function view_property($id){
+        $property=Property::findorfail($id);
+        $user_id=$property->user_id;
+        $user=User::findorfail($user_id);
+        return view('frontend.view_property',compact('property','user'));
+     }
 
     public  function search(Request $request){
         $search_box=$request->search_box;

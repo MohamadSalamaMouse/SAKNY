@@ -71,7 +71,7 @@
                         <p><i class="fas fa-maximize"></i><span>{{$property->carpet}}sqft</span></p>
                     </div>
                     <div class="flex-btn">
-                        <a href="view_property.php?get_id=" class="btn">view property</a>
+                        <a href="{{route('view_property',$property->id)}}" class="btn">view property</a>
                         <input type="submit" value="send enquiry" name="send" class="btn">
                     </div>
                 </div>
