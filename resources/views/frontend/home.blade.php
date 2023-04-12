@@ -6,7 +6,8 @@
 
         <section class="center">
 
-            <form action="search.html" method="post">
+            <form action="" method="post">
+                @csrf
                 <h3>find your perfect home</h3>
                 <div class="box">
                     <p>enter location <span>*</span></p>
@@ -111,37 +112,37 @@
         <div class="box-container">
 
             <div class="box">
-                <img src="images/icon-1.png" alt="">
+                <img src="{{\Illuminate\Support\Facades\URL::asset('assets/images/icon-1.png')}}" alt="">
                 <h3>buy house</h3>
                 <p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Doloremque, incidunt.</p>
             </div>
 
             <div class="box">
-                <img src="images/icon-2.png" alt="">
+                <img src="{{\Illuminate\Support\Facades\URL::asset('assets/images/icon-2.png')}}" alt="">
                 <h3>rent house</h3>
                 <p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Doloremque, incidunt.</p>
             </div>
 
             <div class="box">
-                <img src="images/icon-3.png" alt="">
+                <img src="{{\Illuminate\Support\Facades\URL::asset('assets/images/icon-3.png')}}" alt="">
                 <h3>sell house</h3>
                 <p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Doloremque, incidunt.</p>
             </div>
 
             <div class="box">
-                <img src="images/icon-4.png" alt="">
+                <img src="{{\Illuminate\Support\Facades\URL::asset('assets/images/icon-4.png')}}" alt="">
                 <h3>flats and buildings</h3>
                 <p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Doloremque, incidunt.</p>
             </div>
 
             <div class="box">
-                <img src="images/icon-5.png" alt="">
+                <img src="{{\Illuminate\Support\Facades\URL::asset('assets/images/icon-5.png')}}" alt="">
                 <h3>shops and malls</h3>
                 <p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Doloremque, incidunt.</p>
             </div>
 
             <div class="box">
-                <img src="images/icon-6.png" alt="">
+                <img src="{{\Illuminate\Support\Facades\URL::asset('assets/images/icon-6.png')}}" alt="">
                 <h3>24/7 service</h3>
                 <p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Doloremque, incidunt.</p>
             </div>
@@ -162,89 +163,84 @@
 
         <div class="box-container">
 
-            <div class="box">
-                <div class="admin">
-                    <h3>j</h3>
-                    <div>
-                        <p>john deo</p>
-                        <span>10-11-2022</span>
-                    </div>
-                </div>
-                <div class="thumb">
-                    <p class="total-images"><i class="far fa-image"></i><span>4</span></p>
-                    <p class="type"><span>house</span><span>sale</span></p>
-                    <form action="" method="post" class="save">
-                        <button type="submit" name="save" class="far fa-heart"></button>
-                    </form>
-                    <img src="images/house-img-1.webp" alt="">
-                </div>
-                <h3 class="name">modern flats and appartments</h3>
-                <p class="location"><i class="fas fa-map-marker-alt"></i><span>andheri, mumbai, india - 401303</span></p>
-                <div class="flex">
-                    <p><i class="fas fa-bed"></i><span>3</span></p>
-                    <p><i class="fas fa-bath"></i><span>2</span></p>
-                    <p><i class="fas fa-maximize"></i><span>750sqft</span></p>
-                </div>
-                <a href="view_property.html" class="btn">view property</a>
-            </div>
+            @if ($properties != [])
+                @foreach ($properties as $property)
 
-            <div class="box">
-                <div class="admin">
-                    <h3>j</h3>
-                    <div>
-                        <p>john deo</p>
-                        <span>10-11-2022</span>
-                    </div>
-                </div>
-                <div class="thumb">
-                    <p class="total-images"><i class="far fa-image"></i><span>4</span></p>
-                    <p class="type"><span>flat</span><span>sale</span></p>
-                    <form action="" method="post" class="save">
-                        <button type="submit" name="save" class="far fa-heart"></button>
-                    </form>
-                    <img src="images/house-img-2.webp" alt="">
-                </div>
-                <h3 class="name">modern flats and appartments</h3>
-                <p class="location"><i class="fas fa-map-marker-alt"></i><span>andheri, mumbai, india - 401303</span></p>
-                <div class="flex">
-                    <p><i class="fas fa-bed"></i><span>3</span></p>
-                    <p><i class="fas fa-bath"></i><span>2</span></p>
-                    <p><i class="fas fa-maximize"></i><span>750sqft</span></p>
-                </div>
-                <a href="view_property.html" class="btn">view property</a>
-            </div>
 
-            <div class="box">
-                <div class="admin">
-                    <h3>j</h3>
-                    <div>
-                        <p>john deo</p>
-                        <span>10-11-2022</span>
-                    </div>
-                </div>
-                <div class="thumb">
-                    <p class="total-images"><i class="far fa-image"></i><span>4</span></p>
-                    <p class="type"><span>flat</span><span>sale</span></p>
-                    <form action="" method="post" class="save">
-                        <button type="submit" name="save" class="far fa-heart"></button>
-                    </form>
-                    <img src="images/house-img-3.jpg" alt="">
-                </div>
-                <h3 class="name">modern flats and appartments</h3>
-                <p class="location"><i class="fas fa-map-marker-alt"></i><span>andheri, mumbai, india - 401303</span></p>
-                <div class="flex">
-                    <p><i class="fas fa-bed"></i><span>3</span></p>
-                    <p><i class="fas fa-bath"></i><span>2</span></p>
-                    <p><i class="fas fa-maximize"></i><span>750sqft</span></p>
-                </div>
-                <a href="view_property.html" class="btn">view property</a>
-            </div>
+                    @if(!empty($property->image_02))
+                            <?php $image_coutn_02 = 1?>
+                    @else
+                            <?php $image_coutn_02 = 0?>
+                    @endif
+                    @if(!empty($property->image_03))
+                            <?php $image_coutn_03 = 1?>
+                    @else
+                            <?php $image_coutn_03 = 0?>
+                    @endif
+                    @if(!empty($property->image_04))
+                            <?php $image_coutn_04 = 1?>
+                    @else
+                            <?php $image_coutn_04 = 0?>
+                    @endif
+                    @if(!empty($property->image_05))
+                            <?php $image_coutn_05 = 1?>
+                    @else
+                            <?php $image_coutn_05 = 0?>
+                    @endif
 
+                        <?php $total_images = (1 + $image_coutn_02 + $image_coutn_03 + $image_coutn_04 + $image_coutn_05);?>
+
+
+                    <form action="" method="POST">
+                        <div class="box">
+                            <input type="hidden" name="property_id" value="{{$property->id}}">
+
+                            <button type="submit" name="save" class="save"><i class="fas fa-heart"></i><span>saved</span></button>
+
+                            <button type="submit" name="save" class="save"><i class="far fa-heart"></i><span>save</span></button>
+
+                            <div class="thumb">
+                                <p class="total-images"><i class="far fa-image"></i><span><?= $total_images; ?></span></p>
+
+                                <img src="attachments/{{$property->user_id}}/{{$property->id}}/{{$property->image_01}}" alt="">
+                            </div>
+                            <div class="admin">
+                                <h3><?= substr($property->user_name, 0, 1); ?></h3>
+                                <div>
+                                    <p>{{$property->user_name}}</p>
+                                    <span>{{$property->created_at}}</span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="box">
+                            <div class="price"><i class="fas fa-indian-rupee-sign"></i><span>{{$property->price}}</span></div>
+                            <h3 class="name">{{$property->property_name}}</h3>
+                            <p class="location"><i class="fas fa-map-marker-alt"></i><span>{{$property->address}}</span></p>
+                            <div class="flex">
+                                <p><i class="fas fa-house"></i><span>{{$property->type}}</span></p>
+                                <p><i class="fas fa-tag"></i><span>{{$property->offer}}</span></p>
+                                <p><i class="fas fa-bed"></i><span>{{$property->bnk}}</span></p>
+                                <p><i class="fas fa-trowel"></i><span>{{$property->status}}</span></p>
+                                <p><i class="fas fa-couch"></i><span>{{$property->furnished}}</span></p>
+                                <p><i class="fas fa-maximize"></i><span>{{$property->carpet}}sqft</span></p>
+                            </div>
+                            <div class="flex-btn">
+                                <a href="{{route('view_property',$property->id)}}" class="btn">view property</a>
+                                <input type="submit" value="send enquiry" name="send" class="btn">
+                            </div>
+                        </div>
+                    </form>
+
+                @endforeach
+            @else
+                <p class="empty">no properties added yet! <a href="{{route('property')}}" style="margin-top:1.5rem;" class="btn">add new</a></p>
+            @endif
         </div>
 
         <div style="margin-top: 2rem; text-align:center;">
-            <a href="listings.html" class="inline-btn">view all</a>
+            <a href="{{route('all listings')}}" class="inline-btn">view all</a>
         </div>
+
 
     </section>
 
