@@ -8,12 +8,6 @@
 
         <div class="box-container">
 
-            <div class="box">
-
-                <h3>welcome!</h3>
-                <p>tyy</p>
-                <a href="{{route('admin.update.create')}}" class="btn">update profile</a>
-            </div>
 
             <div class="box">
 

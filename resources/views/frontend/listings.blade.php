@@ -71,7 +71,7 @@
                         <p><i class="fas fa-maximize"></i><span>{{$property->carpet}}sqft</span></p>
                     </div>
                     <div class="flex-btn">
-                        <a href="{{route('view_property',$property->id)}}" class="btn">view property</a>
+                        <a href="{{route('admin.view_property',$property->id)}}" class="btn">view property</a>
 
                     </div>
                 </div>

@@ -48,10 +48,11 @@
                 <p class="price"><i class="fas fa-indian-rupee-sign"></i>{{$property->price}}</p>
                 <h3 class="name">{{$property->property_name}}</h3>
                 <p class="location"><i class="fas fa-map-marker-alt"></i>{{$property->address}}</p>
-
+                    <a href="{{route('admin.view_property',$property->id)}}" class="btn">view property</a>
                     <form action="{{route('admin.property.destroy',$property->id)}}" method="POST">
                         @method('delete')
                         @csrf
+
                         <input type="submit" value="Delete Property" onclick="return confirm('delete this property?');" name="delete" class="delete-btn">
                     </form>
             </div>

@@ -223,5 +223,11 @@ class PropertyController extends Controller
         $property->delete();
         return redirect()->back();
     }
+    function admin_view_property($id){
 
+        $property=Property::findorfail($id);
+        $user_id=$property->user_id;
+        $user=User::findorfail($user_id);
+        return view('admin.view_property',compact('property','user'));
+    }
 }

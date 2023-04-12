@@ -30,7 +30,7 @@ Route::prefix('admin')->name('admin.')->group(function (){
         //profiles admin
         Route::get('update/create',[updateController::class,'create'])->name('update.create');
 
-        Route::get('/',function (){return view('admin.master');})->name('index');
+        Route::get('/',[HomeController::class,'index'])->name('index');
         //home of dashboard
         Route::get('dashboard/home',[HomeController::class,'index'])->name('dashboard.home');
        //get all admins
@@ -59,6 +59,7 @@ Route::prefix('admin')->name('admin.')->group(function (){
         Route::post('property/search',[PropertyController::class,'search'])->name('property.search');
         //delete property with id
         Route::delete('property/{id}',[PropertyController::class,'destroy'])->name('property.destroy');
+        Route::get('view_property/{id}',[PropertyController::class,'admin_view_property'])->name('view_property');
 
     });
     require __DIR__.'/admin_auth.php';

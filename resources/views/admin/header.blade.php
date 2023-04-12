@@ -2,7 +2,7 @@
 
     <div id="close-btn"><i class="fas fa-times"></i></div>
 
-    <a href="dashboard.php" class="logo">AdminPanel.</a>
+    <a href="{{route('admin.dashboard.home')}}" class="logo">AdminPanel.</a>
 
     <nav class="navbar">
         <a href="{{route('admin.dashboard.home')}}"><i class="fas fa-home"></i><span>home</span></a>
@@ -12,7 +12,7 @@
         <a href="{{route('admin.messages')}}"><i class="fas fa-message"></i><span>messages</span></a>
     </nav>
 
-    <a href="update.php" class="btn">update account</a>
+
     <div class="flex-btn">
         <a href="{{route('admin.register')}}" class="option-btn">register</a>
     </div>

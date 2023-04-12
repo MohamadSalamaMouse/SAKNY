@@ -21,11 +21,13 @@
 
                 <p>name : <span><?= $admin->name; ?></p>
                 <p>email : <span><?= $admin->email; ?></p>
+                @if($admin->id !=1)
                 <form action="{{route('admin.destroy',$admin->id)}}" method="POST">
                     @method('delete')
                     @csrf
                     <input type="submit" value="delete admin" onclick="return confirm('delete this admin?');" name="delete" class="delete-btn">
                 </form>
+                @endif
             </div>
             @endforeach
         </div>
