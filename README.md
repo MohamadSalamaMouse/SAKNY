@@ -59,7 +59,7 @@ STRINGIFY program consists of main.asm file where we reference and include all o
 
 | Program Flow-chart  (Activity)                                                                                         | 
 |------------------------------------------------------------------------------------------------------------------------|
-| <img src="" width="1000" /> | 
+| <img src="https://github.com/MohamadSalamaMouse/SAKNY/blob/main/public/Images_App/Swimlane.png" width="1000" /> | 
 
 ### Implemented Features
 - Multi Auth 
