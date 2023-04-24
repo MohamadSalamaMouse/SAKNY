@@ -54,8 +54,12 @@ STRINGIFY program consists of main.asm file where we reference and include all o
 
 | Program Flow-chart  (use case)                                                                                                               | 
 |----------------------------------------------------------------------------------------------------------------------------------------------|
-| <img src="https://github.com/MohamadSalamaMouse/Natural-Language-Processing/blob/main/resources/Photos/Activitydiagram1.png" width="1000" /> | 
+| <img src="https://github.com/MohamadSalamaMouse/SAKNY/blob/main/public/Images_App/Usecasediagram1.png" width="1000" /> | 
 
+
+| Program Flow-chart  (Activity)                                                                                         | 
+|------------------------------------------------------------------------------------------------------------------------|
+| <img src="" width="1000" /> | 
 
 ### Implemented Features
 - Multi Auth 
