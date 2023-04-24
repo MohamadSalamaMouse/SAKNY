@@ -78,7 +78,7 @@ Add Property            |  view Property
 
 Property Details            |  Dashboard
 :-------------------------:|:-------------------------:
-<img src="https://github.com/MohamadSalamaMouse/Natural-Language-Processing/blob/main/resources/Photos/3.png" width="500" />  |    <img src="https://github.com/MohamadSalamaMouse/Natural-Language-Processing/blob/main/resources/Photos/4.png" width="500" />
+<img src="https://github.com/MohamadSalamaMouse/SAKNY/blob/main/public/Images_App/property_details.jpeg" width="500" />  |    <img src="https://github.com/MohamadSalamaMouse/SAKNY/blob/main/public/Images_App/dashboard.jpeg" width="500" />
 
 
 ## Run Locally
