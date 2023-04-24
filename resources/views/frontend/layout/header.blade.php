@@ -17,13 +17,13 @@
             <div class="menu">
                 <ul>
 
-                    <li><a href="#">my listings<i class="fas fa-angle-down"></i></a>
-                        <ul>
-                            <li><a href="dashboard.php">dashboard</a></li>
-                            <li><a href="post_property.php">post property</a></li>
-                            <li><a href="my_listings.php">my listings</a></li>
-                        </ul>
-                    </li>
+{{--                    <li><a href="#">my listings<i class="fas fa-angle-down"></i></a>--}}
+{{--                        <ul>--}}
+{{--                            <li><a href="dashboard.php">dashboard</a></li>--}}
+{{--                            <li><a href="post_property.php">post property</a></li>--}}
+{{--                            <li><a href="my_listings.php">my listings</a></li>--}}
+{{--                        </ul>--}}
+{{--                    </li>--}}
                     <li><a href="#">options<i class="fas fa-angle-down"></i></a>
                         <ul>
                             <li><a href="{{route('search.index')}}">filter search</a></li>
@@ -41,20 +41,21 @@
             </div>
 
             <ul>
-                <li><a href="#">saved <i class="far fa-heart"></i></a></li>
+                <li> <form method="POST" action="{{ route('logout') }}">
+                        @csrf
+                        <x-dropdown-link :href="route('logout')"
+                                         onclick="event.preventDefault();
+                                                this.closest('form').submit();">
+                            {{ __('Log Out') }}
+                        </x-dropdown-link>
+                    </form>
+                </li>
                 <li><a href="#">account <i class="fas fa-angle-down"></i></a>
                     <ul>
                         <li><a href="{{route('login')}}">login</a></li>
                         <li><a href="{{route('register')}}">register</a></li>
                         <li><a href="{{route('profile.edit')}}">profile</a></li>
-                        <form method="POST" action="{{ route('logout') }}">
-                            @csrf
-                            <x-dropdown-link :href="route('logout')"
-                                             onclick="event.preventDefault();
-                                                this.closest('form').submit();">
-                                {{ __('Log Out') }}
-                            </x-dropdown-link>
-                        </form>
+
                     </ul>
                 </li>
             </ul>
