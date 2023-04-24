@@ -30,8 +30,7 @@ class SearchController extends Controller
             ->whereBetween('price',[$minimum,$maximum])
             ->orderBy('created_at','desc')
             ->get();
-        return $properties;
-        die();
+
         return view('frontend.search',compact('properties'));
     }
 }

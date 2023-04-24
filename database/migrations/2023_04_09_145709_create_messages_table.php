@@ -15,7 +15,7 @@ return new class extends Migration
             $table->id();
             $table->string('name',50);
             $table->string('email',50);
-            $table->string('phone',10);
+            $table->string('phone',11);
             $table->text('message');
             $table->timestamps();
         });

@@ -2,7 +2,7 @@
 
     <nav class="navbar nav-1">
         <section class="flex">
-            <a href="home.html" class="logo"><i class="fas fa-house"></i>MyHome</a>
+            <a href="{{route('home_page')}}" class="logo"><i class="fas fa-house"></i>MyHome</a>
 
             <ul>
                 <li><a href="{{route('property')}}">post property<i class="fas fa-paper-plane"></i></a></li>
@@ -49,7 +49,6 @@
                         <li><a href="{{route('profile.edit')}}">profile</a></li>
                         <form method="POST" action="{{ route('logout') }}">
                             @csrf
-
                             <x-dropdown-link :href="route('logout')"
                                              onclick="event.preventDefault();
                                                 this.closest('form').submit();">
