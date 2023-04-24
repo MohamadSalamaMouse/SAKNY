@@ -41,9 +41,9 @@
                 <div class="box">
                     <input type="hidden" name="property_id" value="{{$property->id}}">
 
-                    <button type="submit" name="save" class="save"><i class="fas fa-heart"></i><span>saved</span></button>
+{{--                    <button type="submit" name="save" class="save"><i class="fas fa-heart"></i><span>saved</span></button>--}}
 
-                    <button type="submit" name="save" class="save"><i class="far fa-heart"></i><span>save</span></button>
+{{--                    <button type="submit" name="save" class="save"><i class="far fa-heart"></i><span>save</span></button>--}}
 
                     <div class="thumb">
                         <p class="total-images"><i class="far fa-image"></i><span><?= $total_images; ?></span></p>
