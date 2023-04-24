@@ -74,7 +74,7 @@ STRINGIFY program consists of main.asm file where we reference and include all o
 
 Add Property            |  view Property
 :-------------------------:|:-------------------------:
-<img src="https://github.com/MohamadSalamaMouse/SAKNY/blob/main/public/Images_App/listing.jpeg" width="500" />
+<img src="https://github.com/MohamadSalamaMouse/SAKNY/blob/main/public/Images_App/Add_Property.jpeg" width="500" />  |    <img src="https://github.com/MohamadSalamaMouse/SAKNY/blob/main/public/Images_App/listing.jpeg" width="500" />
 
 Property Details            |  Dashboard
 :-------------------------:|:-------------------------:
