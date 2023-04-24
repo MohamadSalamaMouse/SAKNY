@@ -2,54 +2,60 @@
 
 
 # Introduction
-String manipulation is a concept beneath NLP's general term, which refers to the process of changing or modifying strings, in order to manipulate
-data or text and reach the required format.
-
-##### String-manipulation can be used to perform small actions like:
-
-<img align="right" alt="GIF" height="160px" src="https://media.giphy.com/media/du3J3cXyzhj75IOgvA/giphy.gif" /> 
-
-- Rearranging white spaces
-- Positioning punctuation marks
 
 
-##### String-manipulation also involve more complicated tasks like:
-- Removing duplicated words
-- Correcting spelling and grammar rules
-- Finding substrings & concatenating strings
 
 
-<h3 align="center"> What we are trying to do here is  creating a command line interface -Text Editor- which also has the ability to perform some string manipulation techniques</h3>
 
 ---
 
-##  STRINGIFY Documentation
-STRINGIFY is a String manipulation program that we developed in 8086 assembly language to perform some common text manipulation processes.
+##   Documentation
 
-STRINGIFY program consists of main.asm file where we reference and include all other files and functions and we also have four files more which are :
-<ol dir="auto">
-<li>
-<p dir="auto"><strong>ui.inc ------->></strong>The main file used for rendering the program, also includes rendering related functions such as function implement delay.</p>
-</li>
+[//]: # (STRINGIFY is a String manipulation program that we developed in 8086 assembly language to perform some common text manipulation processes.)
 
-<li>
-<p dir="auto"><strong>caps.inc  ---->></strong>Includes functions to capitalize the beginning of the sentence and be sure that the rest of the sentence litters is lowercase.</p>
-</li>
+[//]: # ()
+[//]: # (STRINGIFY program consists of main.asm file where we reference and include all other files and functions and we also have four files more which are :)
 
-<li>
-<p dir="auto"><strong>spaces.inc  -->></strong>Includes functions to remove extra white spaces  and also add white space after common punctuation marks.</p>
-</li>
+[//]: # (<ol dir="auto">)
 
-<li>
-<p dir="auto"><strong>dups.inc ---->></strong>Includes functions to remove successive duplicates words.</p>
-</li>
+[//]: # (<li>)
 
-<li>
-<p dir="auto"><strong>files.inc ---->></strong>Includes functions to handle and deal with files.</p>
-</li>
+[//]: # (<p dir="auto"><strong>ui.inc ------->></strong>The main file used for rendering the program, also includes rendering related functions such as function implement delay.</p>)
 
-</ol>
+[//]: # (</li>)
 
+[//]: # ()
+[//]: # (<li>)
+
+[//]: # (<p dir="auto"><strong>caps.inc  ---->></strong>Includes functions to capitalize the beginning of the sentence and be sure that the rest of the sentence litters is lowercase.</p>)
+
+[//]: # (</li>)
+
+[//]: # ()
+[//]: # (<li>)
+
+[//]: # (<p dir="auto"><strong>spaces.inc  -->></strong>Includes functions to remove extra white spaces  and also add white space after common punctuation marks.</p>)
+
+[//]: # (</li>)
+
+[//]: # ()
+[//]: # (<li>)
+
+[//]: # (<p dir="auto"><strong>dups.inc ---->></strong>Includes functions to remove successive duplicates words.</p>)
+
+[//]: # (</li>)
+
+[//]: # ()
+[//]: # (<li>)
+
+[//]: # (<p dir="auto"><strong>files.inc ---->></strong>Includes functions to handle and deal with files.</p>)
+
+[//]: # (</li>)
+
+[//]: # ()
+[//]: # (</ol>)
+
+[//]: # ()
 
 
 | Program Flow-chart  (use case)                                                                                                               | 
