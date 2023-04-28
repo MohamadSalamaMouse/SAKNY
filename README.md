@@ -11,51 +11,6 @@
 
 ##   Documentation
 
-[//]: # (STRINGIFY is a String manipulation program that we developed in 8086 assembly language to perform some common text manipulation processes.)
-
-[//]: # ()
-[//]: # (STRINGIFY program consists of main.asm file where we reference and include all other files and functions and we also have four files more which are :)
-
-[//]: # (<ol dir="auto">)
-
-[//]: # (<li>)
-
-[//]: # (<p dir="auto"><strong>ui.inc ------->></strong>The main file used for rendering the program, also includes rendering related functions such as function implement delay.</p>)
-
-[//]: # (</li>)
-
-[//]: # ()
-[//]: # (<li>)
-
-[//]: # (<p dir="auto"><strong>caps.inc  ---->></strong>Includes functions to capitalize the beginning of the sentence and be sure that the rest of the sentence litters is lowercase.</p>)
-
-[//]: # (</li>)
-
-[//]: # ()
-[//]: # (<li>)
-
-[//]: # (<p dir="auto"><strong>spaces.inc  -->></strong>Includes functions to remove extra white spaces  and also add white space after common punctuation marks.</p>)
-
-[//]: # (</li>)
-
-[//]: # ()
-[//]: # (<li>)
-
-[//]: # (<p dir="auto"><strong>dups.inc ---->></strong>Includes functions to remove successive duplicates words.</p>)
-
-[//]: # (</li>)
-
-[//]: # ()
-[//]: # (<li>)
-
-[//]: # (<p dir="auto"><strong>files.inc ---->></strong>Includes functions to handle and deal with files.</p>)
-
-[//]: # (</li>)
-
-[//]: # ()
-[//]: # (</ol>)
-
-[//]: # ()
 
 
 | Program Flow-chart  (use case)                                                                                                               | 
