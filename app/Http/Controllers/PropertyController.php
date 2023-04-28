@@ -195,6 +195,8 @@ class PropertyController extends Controller
         $properties=Property::all();
         return view('frontend.listings',compact('properties'));
     }
+
+
     function all_listings_property_admin(){
 
         $properties=Property::all();
