@@ -18,10 +18,7 @@
 | <img src="https://github.com/MohamadSalamaMouse/SAKNY/blob/main/public/Images_App/Usecasediagram1.png" width="1000" /> | 
 
 
-| Program Flow-chart  (Activity)                                                                                         | 
-|------------------------------------------------------------------------------------------------------------------------|
-| <img src="https://github.com/MohamadSalamaMouse/SAKNY/blob/main/public/Images_App/Swimlane.png" width="1000" /> | 
-
+ 
 ### Implemented Features
 - Multi Auth 
 - CRUD Operation
